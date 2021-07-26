@@ -240,9 +240,11 @@ for (i = 0; i < practice_len; i++) {
 		show_stim_with_feedback: false,
 		timing_response: 1500,
 		timing_post_trial: 500,
-		on_finish: function(data) {
-            data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
-        },
+		on_finish: function() {
+			jsPsych.data.addDataToLastTrial({
+				exp_stage: "practice"
+			})
+		}
 	}
 	flanker_experiment.push(practice_block)
 }
@@ -266,15 +268,14 @@ for (i = 0; i < exp_len; i++) {
 		timing_response: 1500,
 		show_stim_with_feedback: false,
 		timing_post_trial: 500,
-		on_finish: function(data) {
-            data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
-        },
+		on_finish: function() {
+			jsPsych.data.addDataToLastTrial({
+				exp_stage: "test"
+			})
+		}
 	}
 	flanker_experiment.push(test_block)
 }
 flanker_experiment.push(attention_node)
 flanker_experiment.push(post_task_block)
 flanker_experiment.push(end_block)
-
-
-
