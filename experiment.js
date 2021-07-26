@@ -89,7 +89,7 @@ var test_stimuli = [{
 }];
 
 practice_len = 12 //5
-exp_len = 100 //5
+exp_len = 12 //5
 var practice_trials = jsPsych.randomization.repeat(test_stimuli, practice_len / 4, true);
 var test_trials = jsPsych.randomization.repeat(test_stimuli, exp_len / 4, true);
 
